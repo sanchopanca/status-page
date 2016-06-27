@@ -1,6 +1,11 @@
 <html>
 <head><title>Hello</title></head>
 <body>
-    <h1>Hello {{.UserName}}!</h1>
+    <h1>Services</h1>
+    <ul>
+        {{ range $key, $value := . }}
+        <li><strong>{{ $key }}</strong>: {{ $value }}</li>
+        {{ end }}
+    </ul>
 </body>
 </html>

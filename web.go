@@ -9,15 +9,15 @@ func routes() {
 	http.HandleFunc("/", index)
 }
 
-type Person struct {
-	UserName string
-}
 
 var templ = template.Must(template.ParseFiles("html/page.html"))
 
 func index(w http.ResponseWriter, r *http.Request) {
-	p := Person{UserName: "User"}
-	templ.ExecuteTemplate(w, "page.html", p)
+	var statuses = make(map[string]string)
+	statuses["DB"] = "OK"
+	statuses["WEB"] = "FAIL"
+	statuses["API"] = "OK"
+	templ.ExecuteTemplate(w, "page.html", statuses)
 }
 
 func main() {
